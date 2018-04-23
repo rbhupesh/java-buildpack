@@ -26,6 +26,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+		print "<<<<<<NewRelicAgent COMPILE START>>>>>>>" 
         download_jar
         @droplet.copy_resources
       end
