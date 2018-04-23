@@ -36,6 +36,7 @@ module JavaBuildpack
       # @param [Hash] context a collection of utilities used the component
       def initialize(context)
         super(context)
+		print "<<<<< java_main:JavaMain initialize called >>>>>"
         @spring_boot_utils = JavaBuildpack::Util::SpringBootUtils.new
       end
 
@@ -46,7 +47,6 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-		print "<<<<< java_main:JavaMain compile called >>>>>"
         return unless @spring_boot_utils.is?(@application)
         @droplet.additional_libraries.link_to(@spring_boot_utils.lib(@droplet))
       end
