@@ -26,11 +26,11 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-		print "<!<!<!<!<!<NewRelicAgent COMPILE START>!>!>!>!>!>\n" 
+		print "<!<!<!<!<!<NewRelicAgent COMPILE START>!>!>!>!>!>\n"
         download_jar
-		print "<!<!<!<!<!<NewRelicAgent COMPILE after download_jar>!>!>!>!>!>\n" 
+		print "<!<!<!<!<!<NewRelicAgent COMPILE after download_jar>!>!>!>!>!>\n"
         @droplet.copy_resources
-		print "<!<!<!<!<!<NewRelicAgent COMPILE ENDS>!>!>!>!>!>\n" 
+		print "<!<!<!<!<!<NewRelicAgent COMPILE ENDS>!>!>!>!>!>\n"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
@@ -80,6 +80,7 @@ module JavaBuildpack
       def write_java_opts(java_opts, configuration)
         configuration.each do |key, value|
           java_opts.add_system_property("newrelic.config.#{key}", value)
+		  print "<<<<<<NewRelicAgent write_java_opts >>>>>>\n" 
         end
       end
 
