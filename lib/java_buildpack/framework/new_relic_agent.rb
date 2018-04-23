@@ -53,6 +53,7 @@ module JavaBuildpack
       # (see JavaBuildpack::Component::VersionedDependencyComponent#supports?)
       def supports?
         @application.services.one_service? FILTER, [LICENSE_KEY, LICENSE_KEY_USER]
+		print "<<<<<<NewRelicAgent supports >>>>>>\n" 
       end
 
       private
@@ -80,7 +81,6 @@ module JavaBuildpack
       def write_java_opts(java_opts, configuration)
         configuration.each do |key, value|
           java_opts.add_system_property("newrelic.config.#{key}", value)
-		  print "<<<<<<NewRelicAgent write_java_opts >>>>>>\n" 
         end
       end
 
