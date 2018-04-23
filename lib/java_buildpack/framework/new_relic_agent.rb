@@ -26,13 +26,17 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-		print "<<<<<<NewRelicAgent COMPILE START>>>>>>>" 
+		print "<<<<<<NewRelicAgent COMPILE START>>>>>>>\n" 
+		
         download_jar
+		print "<<<<<<NewRelicAgent COMPILE after download>>>>>>>\n" 
         @droplet.copy_resources
+		print "<<<<<<NewRelicAgent COMPILE after droplet.copy_resources>>>>>>>\n" 
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
+		print "<<<<<<NewRelicAgent release START>>>>>>>\n" 
         credentials   = @application.services.find_service(FILTER, [LICENSE_KEY, LICENSE_KEY_USER])['credentials']
         java_opts     = @droplet.java_opts
         configuration = {}
@@ -50,6 +54,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::VersionedDependencyComponent#supports?)
       def supports?
+		print "<<<<<<NewRelicAgent supports? START>>>>>>>\n" 
         @application.services.one_service? FILTER, [LICENSE_KEY, LICENSE_KEY_USER]
       end
 
@@ -64,18 +69,21 @@ module JavaBuildpack
       private_constant :FILTER, :LICENSE_KEY, :LICENSE_KEY_USER
 
       def apply_configuration(credentials, configuration)
+		print "<<<<<<NewRelicAgent apply_configuration START>>>>>>>\n" 
         configuration['log_file_name']  = 'STDOUT'
         configuration[LICENSE_KEY_USER] = credentials[LICENSE_KEY]
         configuration['app_name']       = @application.details['application_name']
       end
 
       def apply_user_configuration(credentials, configuration)
+		print "<<<<<<NewRelicAgent apply_user_configuration START>>>>>>>\n" 
         credentials.each do |key, value|
           configuration[key] = value
         end
       end
 
       def write_java_opts(java_opts, configuration)
+		print "<<<<<<NewRelicAgent write_java_opts START>>>>>>>\n" 
         configuration.each do |key, value|
           java_opts.add_system_property("newrelic.config.#{key}", value)
         end
