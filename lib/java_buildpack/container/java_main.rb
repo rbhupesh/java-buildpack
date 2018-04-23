@@ -46,6 +46,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+		print "<<<<< java_main:JavaMain compile called >>>>>"
         return unless @spring_boot_utils.is?(@application)
         @droplet.additional_libraries.link_to(@spring_boot_utils.lib(@droplet))
       end
