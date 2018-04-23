@@ -26,12 +26,16 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+		print "<!<!<!<!<!<NewRelicAgent COMPILE START>!>!>!>!>!>\n" 
         download_jar
+		print "<!<!<!<!<!<NewRelicAgent COMPILE after download_jar>!>!>!>!>!>\n" 
         @droplet.copy_resources
+		print "<!<!<!<!<!<NewRelicAgent COMPILE ENDS>!>!>!>!>!>\n" 
       end
 
-      # (see JavaBuildpack::Component::BaseComponent#release)
+      #(see JavaBuildpack::Component::BaseComponent#release)
       def release
+		print "<!<!<!<!<!<NewRelicAgent release START>!>!>!>!>!>\n" 
         credentials   = @application.services.find_service(FILTER, [LICENSE_KEY, LICENSE_KEY_USER])['credentials']
         java_opts     = @droplet.java_opts
         configuration = {}
@@ -43,6 +47,7 @@ module JavaBuildpack
         java_opts.add_javaagent(@droplet.sandbox + jar_name)
                  .add_system_property('newrelic.home', @droplet.sandbox)
         java_opts.add_system_property('newrelic.enable.java.8', 'true') if @droplet.java_home.java_8_or_later?
+		print "<!<!<!<!<!<NewRelicAgent release ENDS>!>!>!>!>!>\n" 
       end
 
       protected
