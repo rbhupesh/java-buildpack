@@ -39,6 +39,8 @@ module JavaBuildpack
         java_opts     = @droplet.java_opts
         configuration = {}
 
+		print "<<<<<<<<NewRelicAgent release after empty configuration>>>>>>>>"
+		
         apply_configuration(credentials, configuration)
         apply_user_configuration(credentials, configuration)
         write_java_opts(java_opts, configuration)
