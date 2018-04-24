@@ -36,14 +36,13 @@ module JavaBuildpack
       # @param [Hash] context a collection of utilities used the component
       def initialize(context)
         super(context)		
-        @spring_boot_utils = JavaBuildpack::Util::SpringBootUtils.new
-		print "==================================JavaMain===================================================\n"
-		print "<<<<< java_main:JavaMain initialize called >>>>>\n"
+        @spring_boot_utils = JavaBuildpack::Util::SpringBootUtils.new		
       end
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
         main_class ? JavaMain.to_s.dash_case : nil
+		print "==================================JavaMain- detect===========================================\n"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
