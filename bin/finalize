@@ -24,5 +24,6 @@ require 'java_buildpack/buildpack'
 
 app_dir = ARGV[0]
 puts '<<<<<<<<BEFORE with build pack bin finialize>>>>>>>'
-JavaBuildpack::Buildpack.with_buildpack(app_dir, 'Finalize failed with exception %s', &:compile)
+x=JavaBuildpack::Buildpack.with_buildpack(app_dir, 'Finalize failed with exception %s', &:compile)
 puts '<<<<<<<<AFTER with build pack bin finialize>>>>>>>'
+x
