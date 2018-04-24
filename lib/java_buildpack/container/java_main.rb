@@ -52,7 +52,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
-        puts 'BHUPESH Container java_main.rb release'
+       
         manifest_class_path.each { |path| @droplet.additional_libraries << path }
 
         
