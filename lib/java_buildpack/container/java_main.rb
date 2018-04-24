@@ -61,7 +61,9 @@ module JavaBuildpack
         end
 
         classpath = @spring_boot_utils.is?(@application) ? '-cp $PWD/.' : @droplet.additional_libraries.as_classpath
-        release_text(classpath)
+        puts "===============================JavaMain- release=========================================\n"
+		print "===============================JavaMain- release=========================================\n"
+		release_text(classpath)
       end
 
       private
