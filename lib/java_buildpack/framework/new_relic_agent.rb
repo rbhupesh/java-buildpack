@@ -26,18 +26,17 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-		print "<!<!<!<!<!<NewRelicAgent COMPILE START>!>!>!>!>!>\n"
-        download_jar
-		print "<!<!<!<!<!<NewRelicAgent COMPILE after download_jar>!>!>!>!>!>\n"
+		print "<<<<<<NewRelicAgent COMPILE START>>>>>>>\n"
+        download_jar		
         @droplet.copy_resources
-		print "<!<!<!<!<!<NewRelicAgent COMPILE ENDS>!>!>!>!>!>\n"
+		print "<<<<<<NewRelicAgent After droplet.copy_resources>>>>>>\n"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
         credentials   = @application.services.find_service(FILTER, [LICENSE_KEY, LICENSE_KEY_USER])['credentials']
         java_opts     = @droplet.java_opts
-        configuration = {}
+        configuration = {} #empty hashMap
 	    apply_configuration(credentials, configuration)
         apply_user_configuration(credentials, configuration)
         write_java_opts(java_opts, configuration)
