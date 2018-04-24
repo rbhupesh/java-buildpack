@@ -20,8 +20,9 @@ $stdout.sync = true
 $stderr.sync = true
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 
+puts 'BHUPESH bin release before java build pack'
 require 'java_buildpack/buildpack'
 app_dir = ARGV[0]
-puts 'BHUPESH bin release before java build pack'
+
 output = JavaBuildpack::Buildpack.with_buildpack(app_dir, 'Release failed with exception %s', &:release)
 puts output
