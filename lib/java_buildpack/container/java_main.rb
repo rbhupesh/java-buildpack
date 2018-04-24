@@ -36,6 +36,8 @@ module JavaBuildpack
       # @param [Hash] context a collection of utilities used the component
       def initialize(context)
         super(context)
+		print "==================================JavaMain===================================================\n"
+		print "<<<<< java_main:JavaMain initialize called >>>>>\n"
         @spring_boot_utils = JavaBuildpack::Util::SpringBootUtils.new
       end
 
