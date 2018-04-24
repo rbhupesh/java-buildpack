@@ -62,6 +62,7 @@ module JavaBuildpack
     # @return [Void]
     def compile
       puts BUILDPACK_MESSAGE % @buildpack_version
+	  puts "<<<<<<buildpack.rb  COMPILE STARTS>>>>>>\n"
 
       container = component_detection('container', @containers, true).first
       no_container unless container

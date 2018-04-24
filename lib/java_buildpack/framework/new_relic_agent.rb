@@ -29,7 +29,7 @@ module JavaBuildpack
 		print "<<<<<<NewRelicAgent COMPILE START>>>>>>>\n"
         download_jar		
         @droplet.copy_resources
-		print "<<<<<<NewRelicAgent After droplet.copy_resources>>>>>>\n"
+		print "<<<<<<NewRelicAgent After droplet.copy_resources COMPILE ENDS>>>>>>\n"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
