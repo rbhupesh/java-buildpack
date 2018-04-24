@@ -54,6 +54,7 @@ module JavaBuildpack
       def release
         manifest_class_path.each { |path| @droplet.additional_libraries << path }
 
+          puts 'BHUPESH Container java_main.rb release'
         if @spring_boot_utils.is?(@application)
           @droplet.environment_variables.add_environment_variable 'SERVER_PORT', '$PORT'
         else
