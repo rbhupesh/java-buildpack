@@ -23,5 +23,5 @@ $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require 'java_buildpack/buildpack'
 
 app_dir = ARGV[0]
-puts 'BHUPESH bin finalize before java build pack'
+puts 'BHUPESH bin-finalize before java build pack'
 JavaBuildpack::Buildpack.with_buildpack(app_dir, 'Finalize failed with exception %s', &:compile)

@@ -26,10 +26,10 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-		print "<<<<<<NewRelicAgent COMPILE START>>>>>>>\n"
+		print "BHUPESH new_relic_agent.rb COMPILE START\n"
         download_jar		
         @droplet.copy_resources
-		print "<<<<<<NewRelicAgent After droplet.copy_resources COMPILE ENDS>>>>>>\n"
+		print "BHUPESH new_relic_agent.rb After droplet.copy_resources COMPILE ENDS\n"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
