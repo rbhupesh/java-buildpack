@@ -41,8 +41,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#detect)
       def detect
-        main_class ? JavaMain.to_s.dash_case : nil
-		print "==================================JavaMain- detect===========================================\n"
+        main_class ? JavaMain.to_s.dash_case : nil		
       end
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
@@ -60,6 +59,7 @@ module JavaBuildpack
         else
           @droplet.additional_libraries.insert 0, @application.root
         end
+		print "===============================JavaMain- release=========================================\n"
 
         classpath = @spring_boot_utils.is?(@application) ? '-cp $PWD/.' : @droplet.additional_libraries.as_classpath
         release_text(classpath)
