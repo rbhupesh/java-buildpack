@@ -26,10 +26,10 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-		print "BHUPESH new_relic_agent.rb COMPILE START\n"
+        print "BHUPESH new_relic_agent.rb COMPILE START\n"
         download_jar		
         @droplet.copy_resources
-		print "BHUPESH new_relic_agent.rb After droplet.copy_resources COMPILE ENDS\n"
+        print "BHUPESH new_relic_agent.rb After droplet.copy_resources COMPILE ENDS\n"
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
@@ -37,7 +37,7 @@ module JavaBuildpack
         credentials   = @application.services.find_service(FILTER, [LICENSE_KEY, LICENSE_KEY_USER])['credentials']
         java_opts     = @droplet.java_opts
         configuration = {} #empty hashMap
-	    apply_configuration(credentials, configuration)
+	      apply_configuration(credentials, configuration)
         apply_user_configuration(credentials, configuration)
         write_java_opts(java_opts, configuration)
 

@@ -62,7 +62,7 @@ module JavaBuildpack
     # @return [Void]
     def compile
       puts BUILDPACK_MESSAGE % @buildpack_version
-	  puts "BHUPESH buildpack.rb  COMPILE STARTS>>>>>>\n"
+      puts "BHUPESH buildpack.rb  COMPILE STARTS>>>>>>\n"
 
       container = component_detection('container', @containers, true).first
       no_container unless container
@@ -83,9 +83,12 @@ module JavaBuildpack
       container = component_detection('container', @containers, true).first
       no_container unless container
 
+      
       commands = []
+      
       commands << component_detection('JRE', @jres, true).first.release
 
+      
       component_detection('framework', @frameworks, false).map(&:release)
 
       commands << container.release
@@ -93,6 +96,8 @@ module JavaBuildpack
       commands.insert 0, @java_opts.as_env_var
       command = commands.flatten.compact.join(' && ')
 
+      @logger.debug { "Bhupesh Release command:\n #{command}" }
+      
       payload = {
         'addons'                => [],
         'config_vars'           => {},
