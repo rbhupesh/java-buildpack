@@ -82,17 +82,18 @@ module JavaBuildpack
     def release
       container = component_detection('container', @containers, true).first
       no_container unless container
-
-      
+            
       commands = []
       
-      commands << component_detection('JRE', @jres, true).first.release
-
-      
+      commands << component_detection('JRE', @jres, true).first.release  
+          
       component_detection('framework', @frameworks, false).map(&:release)
-
+      
+      
       commands << container.release
 
+      @logger.debug { "\nBhupesh container.release:\n #{container.release}" }
+      
       commands.insert 0, @java_opts.as_env_var
       command = commands.flatten.compact.join(' && ')
 
