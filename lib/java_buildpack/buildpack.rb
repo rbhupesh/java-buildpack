@@ -89,15 +89,10 @@ module JavaBuildpack
           
       component_detection('framework', @frameworks, false).map(&:release)
       
-      
       commands << container.release
 
       @logger.debug { "\nBhupesh container.release:\n #{container.release}" }
-      exec "echo", "*"
-      exec "ls -la" 
-        
-        
-      
+   
       commands.insert 0, @java_opts.as_env_var
       command = commands.flatten.compact.join(' && ')
 
